@@ -1,0 +1,172 @@
+
+/* ================== PERSONAL CSS ==================*/
+a {
+  color: red;
+  padding: 8px;
+}
+
+a:hover {
+  color: yellow;
+}
+
+.google-link {
+  color: green;
+  font-family: Times New Roman;
+}
+
+.fancy-box {
+  border: 1px #DDD solid;
+  border-radius: 3px;
+
+  overflow: hidden;
+
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+  padding: 8px 14px 12px 14px;
+  margin-bottom: 15px;
+}
+
+.fancy-box:hover{
+  -webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 1px 3px 1px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,0.1);
+}
+
+input {
+  width: 300px;
+  height: 25px;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+
+input[type=radio]{
+  width: 20px;
+  height: 25px;
+}
+
+form h3 {
+  margin-top: 20px;
+}
+
+/*=================== THEME CSS =====================*/
+
+body {
+  font-size: 16px;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+
+  /* fixes default padding on websites */
+  padding: 0px;
+  margin: 0px;
+
+  /* fixes sizing issues */
+  box-sizing: border-box;
+}
+
+/* make margins on headings smaller */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 5px 0;
+}
+
+/* remove underlining from links */
+a {
+  text-decoration: none;
+}
+
+.btn {
+  background-color: #2780E3;
+  color: white;
+  padding: 10px 0 32px 0;
+  font-size: 18px;
+  display: inline-block;
+  font-family: "Lato", sans-serif;
+}
+
+.btn:hover{
+  background-color: #1C64B5;
+  cursor: pointer;
+}
+
+#navbar {
+  font-weight: 900;
+  background-color: white;
+  color: #FF5A5F;
+  padding: 15px 15%;
+}
+
+#navbar_heading {
+  display: inline-block;
+  font-size: 24px;
+}
+
+/* right side of navbar */
+#navbar_links_container{
+  display: inline-block;
+  vertical-align: middle;
+  float:right;
+}
+
+/* links in navbar */
+#navbar_links_container a {
+  color: white;
+  font-weight: initial;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 0 20px;
+}
+
+#landing {
+  background-color: rgba(0, 0, 30, 0.7);
+  position: relative;
+  min-height: 95vh;
+}
+
+#landing::after {
+  content: "";
+  background: url("http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1444253482/DG2015-san-francisco.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+#landing_container {
+  display: block;
+  margin: 0 15%;
+  padding: 50px 0;
+  color: white;
+}
+
+#landing_content{
+  display: inline-block;
+  max-width: 60%;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+#profile_image {
+  display: inline-block;
+  border-radius: 10px;
+  vertical-align: top;
+}
+
+.content_container {
+  margin: 0 15%;
+}
+
+.spacing {
+  padding: 5px 0;
+}
+
+.spacing-lg {
+  padding: 15px 0;
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Realest8</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+  </head>
+  <body>
+    <div id="navbar">
+        <div id="navbar_heading">Realest8</div>
+    </div>
+
+    <div id="landing">
+      <div id="landing_container">
+        <div>
+            <h1>
+              Insights
+            </h1>
+            <div class="spacing"></div>
+            <hr/>
+            <div class="spacing"></div>
+            <h2>Inputs</h2>
+            <ul>
+              <li>Longitude = {{longitude}}</li>
+              <li>Latitude = {{latitude}}</li>
+              <li>Accomodates = {{accomodates}}</li>
+              <li>Bedrooms = {{bedrooms}}</li>
+              <li>Bathrooms = {{bathrooms}}</li>
+              <li>Beds = {{beds}}</li>
+              <li>Room_type = {{room_type}}</li>
+              <li>Neighbourhood_cleansed = {{neighbourhood_cleansed}}</li>
+              <li>Zipcode = {{zipcode}}</li>
+            </ul>
+            <div class="spacing"></div>
+            <hr/>
+            <div class="spacing"></div>
+            <h3>Predicted Price:</h3>
+            <div>{{predicted_price}}</div>
+            <h3>Predicted Price Trend:</h3>
+            <div>{{predicted_trend}}% change in the next year</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

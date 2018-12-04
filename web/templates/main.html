@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Realest8</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+  </head>
+  <body>
+    <div id="navbar">
+        <div id="navbar_heading">Realest8</div>
+    </div>
+
+    <div id="landing">
+      <div id="landing_container">
+        <div>
+            <h1>
+              Realest8 - Get insights into the potential of Airbnb listings
+            </h1>
+            <div class="spacing"></div>
+            <hr/>
+            <div class="spacing"></div>
+            <form method="POST">
+              <h3>Longitude</h3>
+              <input name="longitude">
+              <h3>Latitude</h3>
+              <input name="latitude">
+              <h3>How many people can the unit accommodate?</h3>
+              <input name="accomodates">
+              <h3>Number of Bedrooms</h3>
+              <input name="bedrooms">
+              <h3>Number of Bathrooms</h3>
+              <input name="bathrooms">
+              <h3>Number of Beds</h3>
+              <input name="beds">
+              <h3>Room Type</h3>
+              <input
+                type="radio"
+                name="room_type"
+                value="Entire home/apt"
+                checked
+              >Entire home/apt
+              <input
+                type="radio"
+                name="room_type"
+                value="Private room"
+              >Private room
+              <input
+                type="radio"
+                name="room_type"
+                value="Shared room"
+              >Shared room</input>
+              <h3>Neighbourhood</h3>
+              <input name="neighbourhood_cleansed">
+              <h3>Zip Code</h3>
+              <input name="zipcode">
+              <div class="spacing-lg"></div>
+              <input class="btn" type="submit">
+            </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
