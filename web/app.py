@@ -14,83 +14,6 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from sklearn.externals import joblib
 from sklearn.preprocessing import StandardScaler
 
-app = Flask(__name__)
-
-@app.route('/viz_1/<nbr>/<beds>')
-def viz_1(nbr, beds):
-    print(nbr, beds)
-    fig = visualize_rent_history(nbr, beds)
-    output = io.BytesIO()
-    FigureCanvas(fig).print_png(output)
-    return Response(output.getvalue(), mimetype='image/png')
-
-@app.route('/viz_2/<nbr>/<beds>/<predicted_price>')
-def viz_2(nbr, beds, predicted_price):
-    fig = visualize_stats(price_comparison_stats(nbr, beds, predicted_price))
-    output = io.BytesIO()
-    FigureCanvas(fig).print_png(output)
-    return Response(output.getvalue(), mimetype='image/png')
-
-@app.route('/', methods=['GET', 'POST'])
-def main():
-    if request.method == 'GET':
-        return render_template("main.html")
-    elif request.method == 'POST':
-        longitude = float(request.form["longitude"])
-        latitude = float(request.form["latitude"])
-        accomodates = float(request.form["accomodates"])
-        bedrooms = float(request.form["bedrooms"])
-        bathrooms = float(request.form["bathrooms"])
-        beds = float(request.form["beds"])
-        room_type = request.form["room_type"]
-        neighbourhood_cleansed = request.form["neighbourhood_cleansed"]
-        zipcode = request.form["zipcode"] + ".0"
-
-        predicted_price = predict_price(
-            longitude,
-            latitude,
-            accomodates,
-            bedrooms,
-            bathrooms,
-            beds,
-            room_type,
-            neighbourhood_cleansed,
-            zipcode,
-        )
-
-        predicted_trend = predict_trend(
-            predicted_price,
-            longitude,
-            latitude,
-            accomodates,
-            bedrooms,
-            bathrooms,
-            beds,
-            room_type,
-            neighbourhood_cleansed,
-            zipcode,
-        )
-
-        return render_template(
-            "results.html",
-            longitude = longitude,
-            latitude = latitude,
-            accomodates = accomodates,
-            bedrooms = bedrooms,
-            bathrooms = bathrooms,
-            beds = beds,
-            room_type = room_type,
-            neighbourhood_cleansed = neighbourhood_cleansed,
-            zipcode = zipcode[:-2],
-            predicted_price = np.round(predicted_price, 2),
-            predicted_trend = np.round(predicted_trend * 100, 2),
-            viz_1_url = f"""/viz_1/{neighbourhood_cleansed}/{str(int(bedrooms))}""",
-            viz_2_url = f"""/viz_2/{neighbourhood_cleansed}/{str(int(bedrooms))}/{predicted_price}"""
-        )
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 # ======= From Pipeline Notebook =======
 # Import Models
 import_path = "../exported_models/airbnb_price_predictor.hdf"
@@ -342,3 +265,81 @@ def visualize_stats(stats):
     plt.plot(days, price_day)
     #plt.savefig('../plots/Airbnb Rent Comparison Sample.png', bbox_inches='tight')
     return plt.gcf()
+
+# ========= Flask App ===========
+app = Flask(__name__)
+
+@app.route('/viz_1/<nbr>/<beds>')
+def viz_1(nbr, beds):
+    print(nbr, beds)
+    fig = visualize_rent_history(nbr, beds)
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+@app.route('/viz_2/<nbr>/<beds>/<predicted_price>')
+def viz_2(nbr, beds, predicted_price):
+    fig = visualize_stats(price_comparison_stats(nbr, beds, predicted_price))
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+@app.route('/', methods=['GET', 'POST'])
+def main():
+    if request.method == 'GET':
+        return render_template("main.html")
+    elif request.method == 'POST':
+        longitude = float(request.form["longitude"])
+        latitude = float(request.form["latitude"])
+        accomodates = float(request.form["accomodates"])
+        bedrooms = float(request.form["bedrooms"])
+        bathrooms = float(request.form["bathrooms"])
+        beds = float(request.form["beds"])
+        room_type = request.form["room_type"]
+        neighbourhood_cleansed = request.form["neighbourhood_cleansed"]
+        zipcode = request.form["zipcode"] + ".0"
+
+        predicted_price = predict_price(
+            longitude,
+            latitude,
+            accomodates,
+            bedrooms,
+            bathrooms,
+            beds,
+            room_type,
+            neighbourhood_cleansed,
+            zipcode,
+        )
+
+        predicted_trend = predict_trend(
+            predicted_price,
+            longitude,
+            latitude,
+            accomodates,
+            bedrooms,
+            bathrooms,
+            beds,
+            room_type,
+            neighbourhood_cleansed,
+            zipcode,
+        )
+
+        return render_template(
+            "results.html",
+            longitude = longitude,
+            latitude = latitude,
+            accomodates = accomodates,
+            bedrooms = bedrooms,
+            bathrooms = bathrooms,
+            beds = beds,
+            room_type = room_type,
+            neighbourhood_cleansed = neighbourhood_cleansed,
+            zipcode = zipcode[:-2],
+            predicted_price = np.round(predicted_price, 2),
+            predicted_trend = np.round(predicted_trend * 100, 2),
+            viz_1_url = f"""/viz_1/{neighbourhood_cleansed}/{str(int(bedrooms))}""",
+            viz_2_url = f"""/viz_2/{neighbourhood_cleansed}/{str(int(bedrooms))}/{predicted_price}"""
+        )
+
+if __name__ == '__main__':
+    app.run(debug=True)
