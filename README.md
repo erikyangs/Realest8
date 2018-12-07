@@ -3,7 +3,9 @@
 ## Overview
 Realest8 predicts pricing and price trends of properties in the San Francisco area to inform real estate investors' decision-making.
 
-Includes a **web-app** and **iPython Notebook** that both have the following functionality:
+[Link to Running Web-app](http://realest8.herokuapp.com/)
+
+Includes a **[web-app](http://realest8.herokuapp.com/)** and **iPython Notebook** that both have the following functionality:
 * Predict Airbnb listing price based on general features
 * Predict Airbnb listing price change in a year from now
 * Visualize/inform the user of how many days the property would have to be rented out on Airbnb to match the average monthly price of regular rent in the area
