@@ -39,10 +39,15 @@ aug18_df = pd.read_hdf(import_path, "aug18_df")
 nov18_df = pd.read_hdf(import_path, "nov18_df")
 
 # Setups
-def scale_X(X):
-    scaler = StandardScaler()
-    scaler.fit(X)
-    return scaler.transform(X)
+scaler_price = StandardScaler()
+scaler_price.fit(predictor_X_df)
+def scale_price_X(X):
+    return scaler_price.transform(X)
+
+scaler_trend = StandardScaler()
+scaler_trend.fit(trend_X_df)
+def scale_trend_X(X):
+    return scaler_trend.transform(X)
 
 def cols_start_with(df, s):
     cols = df.columns
@@ -112,7 +117,7 @@ def predict_price(
         neighbourhood_cleansed,
         zipcode
     )
-    X = X_df.pipe(scale_X)
+    X = X_df.pipe(scale_price_X)
     return price_model.predict(X)[0]
 
 def predict_trend_input_to_X_df(
@@ -166,7 +171,7 @@ def predict_trend(
         neighbourhood_cleansed,
         zipcode
     )
-    X = X_df.pipe(scale_X)
+    X = X_df.pipe(scale_trend_X)
     return trend_model.predict(X)[0]
 
 def nbr_in_rent(c):
