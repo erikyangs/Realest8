@@ -4,6 +4,7 @@
     <title>Realest8</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <div id="navbar">
@@ -38,12 +39,14 @@
                 name="room_type"
                 value="Entire home/apt"
                 checked
-              >Entire home/apt
+              >Entire home/apt</input>
+              <br/>
               <input
                 type="radio"
                 name="room_type"
                 value="Private room"
-              >Private room
+              >Private room</input>
+              <br/>
               <input
                 type="radio"
                 name="room_type"
@@ -57,6 +60,23 @@
               <input class="btn" type="submit">
             </form>
         </div>
+      </div>
+      <div class="spacing-lg"></div>
+    </div>
+
+    <div id="footer">
+      <div class="footer-container">
+        <h3>Realest8</h3>
+        <p>Realest8 predicts pricing and price trends of properties in the San Francisco area to inform real estate investors' decision-making.</p>
+      </div>
+      <div class="footer-container">
+        <h3>Credits</h3>
+        <p>
+          This project was a term-long project made for <a href="https://data-x.blog/" target="_blank">UC Berkeley's Data-X (IEOR 135) course</a>.
+        </p>
+        <a href="https://github.com/erikyangs/Realest8/" target="_blank">
+          Github Repo
+        </a>
       </div>
     </div>
   </body>

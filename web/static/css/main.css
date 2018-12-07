@@ -1,12 +1,19 @@
 
 /* ================== PERSONAL CSS ==================*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222;
+}
+
 a {
-  color: red;
-  padding: 8px;
+  color: #FF5A5F;
 }
 
 a:hover {
-  color: yellow;
+  color: #FF7A7F;
 }
 
 .google-link {
@@ -169,4 +176,40 @@ a {
 
 .spacing-lg {
   padding: 15px 0;
+}
+
+#footer {
+  background-color: #222;
+  color: #BBB;
+  padding: 15px 15%;
+  border-top: 1px solid #FF5A5F;
+}
+
+.footer-container{
+  display: inline-table;
+  width: 40%;
+  padding-right: 20px;
+}
+
+/* RESPONSIVENESS */
+@media only screen and (max-width: 768px) {
+  .footer-container{
+    display: block;
+    width: 100%;
+    padding-right: 0px;
+    margin-bottom: 25px;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  input[type=radio]{
+    width: 20px;
+    height: 25px;
+  }
 }
