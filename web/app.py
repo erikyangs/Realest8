@@ -8,8 +8,10 @@ import io
 import numpy as np
 import pandas as pd
 
+import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+matplotlib.use('Agg')
 
 from sklearn.externals import joblib
 from sklearn.preprocessing import StandardScaler
